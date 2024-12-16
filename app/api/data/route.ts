@@ -25,7 +25,7 @@ export async function GET(request: Request) {
     // await new Promise((resolve) => setTimeout(resolve, 5000));
 
     // Mockup data folder path
-    const filePath = path.join("app/placeholders", file);
+    const filePath = path.join(process.cwd(),"app/placeholders", file);
 
     // Read the file
     const data = await fs.readFile(filePath, "utf-8");
