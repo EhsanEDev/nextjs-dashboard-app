@@ -77,7 +77,7 @@ export default function Navigation({
           >
             <LinkMUI
               align="center"
-              href="https://github.com/EthanEDev/reactjs-todo-list-app"
+              href="https://github.com/EthanEDev/nextjs-dashboard-app"
               target="_blank"
               color="primary"
               sx={{
