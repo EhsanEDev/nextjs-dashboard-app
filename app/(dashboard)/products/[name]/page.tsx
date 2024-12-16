@@ -15,7 +15,7 @@ import { Sad01Icon } from "hugeicons-react";
 export default async function Product({
   params,
 }: {
-  params: { name: string };
+  params: Promise<{ name: string }>
 }) {
   const prod: string = (await params).name;
 
@@ -136,7 +136,11 @@ export default async function Product({
             color={prd.quantity > 5 ? "success" : "warning"}
             variant="filled"
           />
-          <Chip label={`Rating: ${prd.score} / 5`} color="success" variant="outlined" />
+          <Chip
+            label={`Rating: ${prd.score} / 5`}
+            color="success"
+            variant="outlined"
+          />
         </Stack>
       </CardContent>
     </Card>
