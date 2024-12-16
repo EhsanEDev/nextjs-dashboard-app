@@ -1,3 +1,5 @@
+"use client";
+
 import { Notifs } from "@/app/constants/types";
 import { DoneAll } from "@mui/icons-material";
 import {
@@ -10,7 +12,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Mail01Icon, Notification01Icon,Notification02Icon,Notification03Icon, } from "hugeicons-react";
+import { Mail01Icon, Notification02Icon } from "hugeicons-react";
 import { useRef, useState } from "react";
 import ListItems from "./listItems";
 
@@ -22,6 +24,7 @@ export default function Notify({
   data: Notifs;
 }) {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
+  const [isMarked, setIsMarked] = useState<boolean>(false); // JUST FOR DEMO
   const anchorEl = useRef<HTMLButtonElement | null>(null);
   const unread: number = data.reduce(
     (count, item) => (!item.read ? count + 1 : count),
@@ -32,13 +35,15 @@ export default function Notify({
       <IconButton
         size="large"
         ref={anchorEl}
-        onClick={() => setIsShowMenu(true)}
+        onClick={() => {
+          setIsShowMenu(true);
+        }}
       >
-        <Badge variant="dot" badgeContent={8} color="error">
+        <Badge variant="dot" badgeContent={isMarked ? 0 : unread} color="error">
           {variant === "Notifications" ? (
-            <Notification02Icon />
+            <Notification02Icon size={20} />
           ) : (
-            <Mail01Icon color="primary" />
+            <Mail01Icon size={20} />
           )}
         </Badge>
       </IconButton>
@@ -52,19 +57,19 @@ export default function Notify({
         <ListItem sx={{ display: "flex", justifyContent: "space-between" }}>
           <Stack gap={0.5}>
             <Typography variant="h6">{variant}</Typography>
-            <Typography
-              color="textSecondary"
-              variant="caption"
-            >{`You have ${unread} unread message${
-              unread > 1 ? "s" : ""
-            }`}</Typography>
+            <Typography color="textSecondary" variant="caption">{`You have ${
+              isMarked ? 0 : unread
+            } unread message${unread > 1 ? "s" : ""}`}</Typography>
           </Stack>
-          <IconButton title="Mark all as read">
+          <IconButton
+            onClick={() => setIsMarked(true)}
+            title="Mark all as read"
+          >
             <DoneAll />
           </IconButton>
         </ListItem>
         <Divider />
-        <ListItems items={data} />
+        <ListItems items={data} markAsRead={isMarked} />
         <ListItem>
           <Button fullWidth variant="text">
             View all

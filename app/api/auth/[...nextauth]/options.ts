@@ -1,8 +1,5 @@
-import LinkedInProvider from "next-auth/providers/linkedin";
-import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { cookies } from "next/headers";
-// import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 
 export const options = {
   providers: [
@@ -22,8 +19,14 @@ export const options = {
           placeholder: "enter your password",
         },
       },
-      async authorize(credentials, req) {
-        const user = { id: "1", username: "admin", password: "123456",name: "Ethan Ekhtiyar", email: "ethan.ekhtiyar@gmail.com" };
+      async authorize(credentials) {
+        const user = {
+          id: "1",
+          username: "admin",
+          password: "123456",
+          name: "Ethan Ekhtiyar",
+          email: "ethan.ekhtiyar@gmail.com",
+        };
 
         if (
           credentials?.username === user.username &&
@@ -35,15 +38,6 @@ export const options = {
         }
       },
     }),
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID as string,
-    //   clientSecret: process.env.GOOGLE_SECRET as string,
-    // }),
-    // LinkedInProvider({
-    //   clientId: process.env.LINKEDIN_ID as string,
-    //   clientSecret: process.env.LINKEDIN_SECRET as string,
-    //   style: { logo: "/linkedin.svg", bg: "#f2f2f2", text: "#000" },
-    // }),
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,

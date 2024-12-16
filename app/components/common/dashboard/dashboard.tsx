@@ -1,24 +1,68 @@
 "use client";
 
-import { Box, Container } from "@mui/material";
 import Header from "@app/components/common/header/header";
 import Sidebar from "@app/components/common/sidebar/sidebar";
-import { useState } from "react";
+import { Box, Container } from "@mui/material";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../loadingSpinner";
+import DynamicBreadcrumbs from "./dynamicBreadcrumbs";
+// import Link from "next/link";
 
 export default function Dashboard({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean | null>(null); // Initialize with null to indicate loading
+
+  useEffect(() => {
+    // Retrieve the last open state of the menu from localStorage
+    const savedState = localStorage.getItem("side-menu");
+    setOpen(savedState === "false" ? false : true);
+  }, []);
+
+  useEffect(() => {
+    // Store the current open state in localStorage whenever it changes
+    if (open !== null) {
+      localStorage.setItem("side-menu", String(open));
+    }
+  }, [open]);
+
+  // Show a loading spinner until the state is initialized
+  if (open === null) {
+    return <LoadingSpinner />;
+  }
+
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
       <Header open={open} setOpen={setOpen} />
-      <Box sx={{ display: "flex", flexDirection: "row", flexGrow: 1 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          position: "relative",
+          overflow: "auto",
+          flexGrow: 1,
+        }}
+      >
         <Sidebar open={open} setOpen={setOpen} />
-        {/* <Breadcrumbs>
-        </Breadcrumbs> */}
-        <Container sx={{ my: 8 }} maxWidth="xl">
-          {children}
-        </Container>
+        <Box
+          sx={{
+            flexGrow: 1,
+            overflowX: "hidden",
+            overflowY: "scroll",
+          }}
+        >
+          <DynamicBreadcrumbs />
+          <Container sx={{ py: 3 }} maxWidth="xl">
+            {children}
+          </Container>
+        </Box>
       </Box>
     </Box>
   );

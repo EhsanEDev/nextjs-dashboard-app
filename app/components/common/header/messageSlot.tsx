@@ -1,4 +1,4 @@
-import MessagesItems from "@app/mockData/latestMessages.json";
+import MessagesItems from "@app/placeholders/latestMessages.json";
 import Notify from "./notify/notify";
 
 export default function MessagesSlot() {

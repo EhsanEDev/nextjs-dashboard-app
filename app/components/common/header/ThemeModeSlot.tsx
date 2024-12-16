@@ -1,3 +1,6 @@
+"use client";
+
+import { ColorMode } from "@app/constants/types";
 import {
   Box,
   IconButton,
@@ -26,7 +29,7 @@ export default function ThemeModeSlot({
     value: string
   ) => {
     if (value) {
-      setMode(value as "system" | "light" | "dark");
+      setMode(value as ColorMode);
     }
   };
 
@@ -46,7 +49,7 @@ export default function ThemeModeSlot({
       {variant === "group" ? (
         <ToggleButtonGroup
           exclusive
-          size="small"
+          size="medium"
           value={mode}
           onChange={handleChange}
         >
@@ -63,9 +66,9 @@ export default function ThemeModeSlot({
       ) : (
         <Box>
           <IconButton size="large" ref={anchorEl} onClick={handleOpen}>
-            {mode === "system" ? <SmartPhone01Icon /> : <></>}
-            {mode === "light" ? <Sun03Icon /> : <></>}
-            {mode === "dark" ? <Moon02Icon /> : <></>}
+            {mode === "system" ? <SmartPhone01Icon size={20} /> : <></>}
+            {mode === "light" ? <Sun03Icon size={20} /> : <></>}
+            {mode === "dark" ? <Moon02Icon size={20} /> : <></>}
           </IconButton>
           <Menu
             transformOrigin={{ horizontal: "right", vertical: "top" }}
@@ -76,39 +79,42 @@ export default function ThemeModeSlot({
           >
             <ListItem disablePadding>
               <ListItemButton
+                selected={mode === "light"}
                 onClick={() => {
                   setMode("light");
                   handleClose();
                 }}
               >
                 <ListItemIcon>
-                  <Sun03Icon />
+                  <Sun03Icon size={20} />
                 </ListItemIcon>
                 <ListItemText>Light</ListItemText>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton
+                selected={mode === "dark"}
                 onClick={() => {
                   setMode("dark");
                   handleClose();
                 }}
               >
                 <ListItemIcon>
-                  <Moon02Icon />
+                  <Moon02Icon size={20} />
                 </ListItemIcon>
                 <ListItemText>Dark</ListItemText>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton
+                selected={mode === "system"}
                 onClick={() => {
                   setMode("system");
                   handleClose();
                 }}
               >
                 <ListItemIcon>
-                  <SmartPhone01Icon />
+                  <SmartPhone01Icon size={20} />
                 </ListItemIcon>
                 <ListItemText>System</ListItemText>
               </ListItemButton>

@@ -1,4 +1,4 @@
-import NotificationItems from "@app/mockData/latestNotifications.json";
+import NotificationItems from "@app/placeholders/latestNotifications.json";
 import Notify from "./notify/notify";
 
 export default function NotificationSlot() {

@@ -52,33 +52,42 @@ export default function Sidebar({
   setOpen,
 }: {
   open: boolean;
-  setOpen: Function;
+  setOpen: (value: boolean) => void;
 }) {
   const theme = useTheme();
-  const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  return (
-    <>
-      {/* For mobile and Tablet */}
-      <Drawer
-        PaperProps={{
-          sx: { width: sm ? "100%" : "50%", minWidth: "fit-content" },
-        }}
-        sx={{ display: { xs: "block", md: "none" } }}
-        variant="temporary"
-        open={open}
-        onClick={() => setOpen(false)}
-        onClose={() => setOpen(false)}
-      >
-        <Navigation open={open} setOpen={setOpen} />
-      </Drawer>
-      {/* For Laptop and Desktop */}
-      <Aside
-        sx={{ display: { xs: "none", md: "block" } }}
-        variant="permanent"
-        open={open}
-      >
-        <Navigation open={open} setOpen={setOpen} />
-      </Aside>
-    </>
+  const xs = useMediaQuery(theme.breakpoints.down("sm"));
+  const sm = useMediaQuery(theme.breakpoints.down("md"));
+  return sm ? (
+    <Drawer // For mobile and Tablet
+      ModalProps={{ sx: { position: "absolute" } }}
+      PaperProps={{
+        sx: {
+          position: "absolute",
+          width: xs ? "100%" : "50%",
+          minWidth: "fit-content",
+          "&::-webkit-scrollbar": { display: "none" },
+        },
+      }}
+      variant="temporary"
+      disablePortal
+      open={open}
+      onClick={() => setOpen(false)}
+      onClose={() => setOpen(false)}
+    >
+      <Navigation open={open} />
+    </Drawer>
+  ) : (
+    <Aside // For Laptop and Desktop
+      PaperProps={{
+        sx: {
+          position: "absolute",
+          "&::-webkit-scrollbar": { display: "none" },
+        },
+      }}
+      variant="permanent"
+      open={open}
+    >
+      <Navigation open={open} />
+    </Aside>
   );
 }

@@ -1,38 +1,28 @@
-// import TransactionsIcon from '@mui/icons-material/CurrencyExchangeRounded';
+import { Typography } from "@mui/material";
 import {
   Analytics01Icon,
+  CustomerService01Icon,
   DashboardSquare01Icon,
-  Dollar01Icon,
   HelpCircleIcon,
   InformationCircleIcon,
-  Message02Icon,
+  LinkSquare02Icon,
   Settings01Icon,
   ShoppingBag02Icon,
-  TransactionIcon,
-  UserMultiple02Icon,
 } from "hugeicons-react";
-import { Routes } from "../types";
+import { Navs } from "../types";
 
-export const primarySideBarMenu: Routes = [
+export const primarySideBarMenu: Navs = [
+  {
+    element: (
+      <Typography px={1.2} color="textSecondary" variant="overline">
+        Main
+      </Typography>
+    ),
+  },
   {
     title: "Dashboard",
     path: "/",
     icon: <DashboardSquare01Icon />,
-  },
-  {
-    title: "Statistics",
-    path: "/statistics",
-    icon: <Analytics01Icon />,
-  },
-  {
-    title: "Payment",
-    path: "/payment",
-    icon: <Dollar01Icon />,
-  },
-  {
-    title: "Transactions",
-    path: "/transactions",
-    icon: <TransactionIcon />,
   },
   {
     title: "Products",
@@ -40,18 +30,22 @@ export const primarySideBarMenu: Routes = [
     icon: <ShoppingBag02Icon />,
   },
   {
-    title: "Customer",
-    path: "/customer",
-    icon: <UserMultiple02Icon />,
+    title: "Statistics",
+    path: "#", // Used # for disabling
+    icon: <Analytics01Icon />,
   },
   {
-    title: "Messages",
-    path: "/messages",
-    icon: <Message02Icon />,
+    title: "Services",
+    path: "#", // Used # for disabling
+    icon: <CustomerService01Icon />,
   },
-];
-
-export const SecondarySideBarMenu: Routes = [
+  {
+    element: (
+      <Typography px={0.5} color="textSecondary" variant="overline">
+        Others
+      </Typography>
+    ),
+  },
   {
     title: "Settings",
     path: "/settings",
@@ -59,13 +53,14 @@ export const SecondarySideBarMenu: Routes = [
   },
   {
     title: "About",
-    path: "/about",
+    path: "#", // Used # for disabling
     icon: <InformationCircleIcon />,
   },
   {
     title: "Help",
-    path: "/help",
+    path: "#", // Used # for disabling
     icon: <HelpCircleIcon />,
-    elink: "/",
+    elink: "https://www.google.com",
+    eicon: <LinkSquare02Icon size={18} />,
   },
 ];

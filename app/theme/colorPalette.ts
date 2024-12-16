@@ -1,10 +1,10 @@
-import { colors, PaletteOptions } from "@mui/material";
+import { PaletteOptions } from "@mui/material";
 
 export const lightPalette: PaletteOptions = {
   mode: "light",
   background: {
-    // default: colors.indigo[50],
-    // paper: colors.indigo[100],
+    default: "#eceff1",
+    paper: "#fbfaff",
   },
 };
 

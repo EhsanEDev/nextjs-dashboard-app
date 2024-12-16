@@ -1,23 +1,22 @@
 import { AppBar, Divider, Stack, Toolbar } from "@mui/material";
 import ThemeModeSlot from "./ThemeModeSlot";
+import Brand from "./brand/brand";
+import MenuSlot from "./menuSlot";
 import MessageSlot from "./messageSlot";
 import NotificationSlot from "./notificationSlot";
 import SearchBarSlot from "./searchBarSlot";
 import UserProfileSlot from "./userProfileSlot";
-import MenuSlot from "./menuSlot";
-import Brand from "./brand/brand";
 
 export default function Header({
   open,
   setOpen,
 }: {
   open: boolean;
-  setOpen: Function;
+  setOpen: (value: boolean) => void;
 }) {
   return (
     <AppBar
       sx={{
-        // px: "10px",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -46,14 +45,17 @@ export default function Header({
         >
           <Brand />
           <MenuSlot open={open} setOpen={setOpen} />
-          <Divider sx={{ height: 24, display: { xs: "none", md: "block" } }} orientation="vertical" />
+          <Divider
+            sx={{ height: 1, display: { xs: "none", md: "block" } }}
+            orientation="vertical"
+          />
           <SearchBarSlot />
         </Stack>
         <Stack gap={1.5} alignItems={"center"} direction={"row"}>
           <ThemeModeSlot variant="drop" />
           <NotificationSlot />
           <MessageSlot />
-          {/* <Divider sx={{ height: 24 }} orientation="vertical" /> */}
+          <Divider sx={{ height: 24 }} orientation="vertical" />
           <UserProfileSlot />
         </Stack>
       </Toolbar>

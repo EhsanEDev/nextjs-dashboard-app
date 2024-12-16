@@ -3,11 +3,16 @@ import { Search01Icon } from "hugeicons-react";
 
 export default function SearchBarSlot() {
   return (
-    <Stack sx={{display: {xs: "none", sm: "flex"}}} gap={0.5} alignItems={"center"} direction={"row"}>
+    <Stack
+      sx={{ display: { xs: "none", sm: "flex" } }}
+      gap={0.5}
+      alignItems={"center"}
+      direction={"row"}
+    >
       <IconButton size="medium">
-        <Search01Icon size={20} />
+        <Search01Icon size={18} />
       </IconButton>
-      <InputBase placeholder="search" />
+      <InputBase placeholder="Search" />
     </Stack>
   );
 }

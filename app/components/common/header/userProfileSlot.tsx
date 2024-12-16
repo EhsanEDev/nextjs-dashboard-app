@@ -1,4 +1,5 @@
-import { UserProfileMenu } from "@/app/constants/menus/userProfileMenu";
+"use client";
+
 import {
   Avatar,
   Box,
@@ -8,97 +9,87 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Divider,
+  Drawer,
   IconButton,
-  ListItem,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Menu,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { Logout04Icon } from "hugeicons-react";
 import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { useAccount } from "../../../hooks/useAccount";
+import UserProfileContent from "./userProfileContent";
 
 export default function UserProfileSlot() {
   const { data: session } = useSession();
   const currentPath = usePathname();
-  const { account } = useAccount();
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
   const [isShowSignoutDialog, setIsShowSignoutDialog] =
     useState<boolean>(false);
+
   const handleOpenMenu = () => {
     setIsShowMenu(true);
   };
-
   const handleCloseMenu = () => {
     setIsShowMenu(false);
   };
+  const handleShowSignoutDialog = () => {
+    setIsShowSignoutDialog(true);
+  };
+
   const anchorEl = useRef<HTMLButtonElement | null>(null);
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down("sm"));
+  const sm = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box>
       <IconButton size="small" ref={anchorEl} onClick={handleOpenMenu}>
-        <Avatar alt={session?.user?.name ?? ""} src={session?.user?.image ?? ""}>
+        <Avatar
+          alt={session?.user?.name ?? ""}
+          src={session?.user?.image ?? ""}
+        >
           {session?.user?.name?.charAt(0)}
         </Avatar>
       </IconButton>
-      <Menu
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        anchorEl={anchorEl.current}
-        open={isShowMenu}
-        onClose={handleCloseMenu}
-      >
-        <ListItem sx={{ gap: 2 }}>
-          <ListItemAvatar>
-            <Avatar
-              sx={{ width: 64, height: 64 }}
-              alt={session?.user?.name ?? ""}
-              src={session?.user?.image ?? ""}
-            >
-              {session?.user?.name?.charAt(0)}
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary={session?.user?.name}
-            secondary={session?.user?.email}
+
+      {sm ? (
+        <Drawer
+          anchor="right"
+          PaperProps={{
+            sx: { width: "fit-content" },
+          }}
+          variant="temporary"
+          open={isShowMenu}
+          onClose={handleCloseMenu}
+        >
+          <UserProfileContent
+            session={session}
+            closeMenu={handleCloseMenu}
+            showSignoutDialoge={handleShowSignoutDialog}
           />
-        </ListItem>
-        <Divider />
-        {UserProfileMenu.map(({ title, path, icon }, index) => (
-          <ListItem disablePadding key={index}>
-            <ListItemButton
-              onClick={() => {
-                handleCloseMenu();
-              }}
-              LinkComponent={Link}
-              href={path}
-            >
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText>{title}</ListItemText>
-            </ListItemButton>
-          </ListItem>
-        ))}
-        <Divider />
-        <ListItem disablePadding>
-          <ListItemButton
-            onClick={() => {
-              setIsShowSignoutDialog(true);
-              handleCloseMenu();
-            }}
-          >
-            <ListItemIcon>
-              <Logout04Icon />
-            </ListItemIcon>
-            <ListItemText>SignOut</ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </Menu>
-      <Dialog fullWidth open={isShowSignoutDialog}>
+        </Drawer>
+      ) : (
+        <Menu
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          anchorEl={anchorEl.current}
+          open={isShowMenu}
+          onClose={handleCloseMenu}
+        >
+          <UserProfileContent
+            session={session}
+            closeMenu={handleCloseMenu}
+            showSignoutDialoge={handleShowSignoutDialog}
+          />
+        </Menu>
+      )}
+
+      <Dialog
+        PaperProps={{ sx: { p: 1 } }}
+        fullWidth
+        fullScreen={xs ? true : false}
+        open={isShowSignoutDialog}
+      >
         <DialogTitle>Sign Out</DialogTitle>
         <DialogContent>
           <DialogContentText>

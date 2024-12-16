@@ -1,16 +1,11 @@
-import { Menu, MenuOpen } from "@mui/icons-material";
-import { Box, IconButton } from "@mui/material";
-import {
-  Menu01Icon,
-  ArrowLeftDoubleIcon,
-  ArrowRightDoubleIcon,
-} from "hugeicons-react";
+import { IconButton } from "@mui/material";
+import { Menu01Icon } from "hugeicons-react";
 export default function MenuSlot({
   open,
   setOpen,
 }: {
   open: boolean;
-  setOpen: Function;
+  setOpen: (value: boolean) => void;
 }) {
   return (
     <IconButton size="large" onClick={() => setOpen(!open)}>
