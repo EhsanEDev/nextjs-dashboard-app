@@ -15,6 +15,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { Layers01Icon, LinkSquare02Icon } from "hugeicons-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function PrdCard({ data }: { data: Prd }) {
@@ -38,6 +39,15 @@ export default function PrdCard({ data }: { data: Prd }) {
         },
       }}
     >
+      <CardMedia sx={{ position: "relative", height: 250 }}>
+        <Image
+          src={data.image}
+          alt={data.title}
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="600px"
+        />
+      </CardMedia>
       <CardHeader
         className="card-header"
         sx={{
@@ -62,7 +72,6 @@ export default function PrdCard({ data }: { data: Prd }) {
           </IconButton>
         }
       />
-      <CardMedia sx={{ height: 250 }} image={data.image} title={data.title} />
       <CardContent>
         <Stack
           flexDirection="row"

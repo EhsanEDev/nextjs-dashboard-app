@@ -47,8 +47,8 @@ export default function UserProfileContent({
                   if(props.title === "Sign Out") showSignoutDialoge();
                   closeMenu();
                 }}
-                LinkComponent={Link}
-                href={props.path}
+                // LinkComponent={Link}
+                // href={props.path}
               >
                 <ListItemIcon>{props.icon}</ListItemIcon>
                 <ListItemText>{props.title}</ListItemText>

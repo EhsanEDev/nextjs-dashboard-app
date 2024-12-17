@@ -12,9 +12,11 @@ import {
   Drawer,
   IconButton,
   Menu,
+  Toolbar,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { Cancel01Icon } from "hugeicons-react";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
@@ -27,8 +29,8 @@ export default function UserProfileSlot() {
   const [isShowSignoutDialog, setIsShowSignoutDialog] =
     useState<boolean>(false);
 
-  const handleOpenMenu = () => {
-    setIsShowMenu(true);
+  const handleToggleMenu = () => {
+    setIsShowMenu(!isShowMenu);
   };
   const handleCloseMenu = () => {
     setIsShowMenu(false);
@@ -43,7 +45,7 @@ export default function UserProfileSlot() {
   const sm = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box>
-      <IconButton size="small" ref={anchorEl} onClick={handleOpenMenu}>
+      <IconButton size="small" ref={anchorEl} onClick={handleToggleMenu}>
         <Avatar
           alt={session?.user?.name ?? ""}
           src={session?.user?.image ?? ""}
@@ -55,13 +57,14 @@ export default function UserProfileSlot() {
       {sm ? (
         <Drawer
           anchor="right"
-          PaperProps={{
-            sx: { width: "fit-content" },
-          }}
           variant="temporary"
           open={isShowMenu}
-          onClose={handleCloseMenu}
+          onClose={() => setIsShowMenu(false)}
+          PaperProps={{
+            sx: { minWidth: "fit-content", width: xs ? "100%" : "50%" },
+          }}
         >
+          <Toolbar />
           <UserProfileContent
             session={session}
             closeMenu={handleCloseMenu}

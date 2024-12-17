@@ -11,11 +11,12 @@ import {
   Typography,
 } from "@mui/material";
 import { Sad01Icon } from "hugeicons-react";
+import Image from "next/image";
 
 export default async function Product({
   params,
 }: {
-  params: Promise<{ name: string }>
+  params: Promise<{ name: string }>;
 }) {
   const prod: string = (await params).name;
 
@@ -37,16 +38,15 @@ export default async function Product({
           </Typography>
         }
       />
-      <CardMedia
-        sx={{
-          height: 600,
-          borderRadius: 1,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        image={prd.image}
-        title={prd.title}
-      />
+      <CardMedia sx={{ position: "relative", height: 600 }}>
+        <Image
+          src={prd.image}
+          alt={prd.title}
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </CardMedia>
       <CardContent>
         <Typography variant="h6" color="textPrimary">
           Summary

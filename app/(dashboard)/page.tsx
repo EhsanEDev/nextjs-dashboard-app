@@ -9,7 +9,7 @@ import { cardType } from "../constants/types";
 export default function Home() {
   return (
     <>
-      <Grid2 container columns={4} gridColumn={4} spacing={4}>
+      <Grid2 container columns={4} gridColumn={4} spacing={2}>
         {briefInfo.map((card, index) => (
           <Grid2 key={index} size={{ xs: 4, md: 2, lg: 2, xl: 1 }}>
             <CardBrief

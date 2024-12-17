@@ -7,7 +7,7 @@ const primary = Roboto({
   display: "swap",
 });
 const secondary = Oswald({
-  weight: ["500"],
+  weight: ["400"],
   subsets: ["latin"],
   display: "swap",
 });

@@ -13,7 +13,7 @@ export default function FilterProductsSkeleton() {
       }}
     >
       {Array.from({ length: 7 }).map((_, index) => (
-        <Skeleton key={index} sx={{ flexGrow: 1 }} height={80} />
+        <Skeleton key={index} sx={{ flexGrow: 1, minWidth: 120 }}  height={80} />
       ))}
     </Card>
   );

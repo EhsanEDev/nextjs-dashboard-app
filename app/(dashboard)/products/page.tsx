@@ -28,12 +28,12 @@ export default function Products() {
         </Grid2>
         {loading || data === null
           ? Array.from({ length: 8 }).map((_, index) => (
-              <Grid2 key={index} size={{ xs: 12, md: 6, lg: 4, xl: 3 }}>
+              <Grid2 key={index} size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
                 <PrdCardSkeleton />
               </Grid2>
             ))
           : filteredList.map((prd: Prd) => (
-              <Grid2 key={prd.id} size={{ xs: 12, md: 6, lg: 4, xl: 3 }}>
+              <Grid2 key={prd.id} size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
                 <PrdCard data={prd} />
               </Grid2>
             ))}

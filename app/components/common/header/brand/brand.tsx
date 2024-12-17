@@ -5,7 +5,13 @@ import NextLink from "next/link";
 
 export default function Brand() {
   return (
-    <Link color="textSecondary" underline="none" href="/" component={NextLink}>
+    <Link
+      sx={{ display: { xs: "none", md: "flex" } }}
+      color="textSecondary"
+      underline="none"
+      href="/"
+      component={NextLink}
+    >
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
