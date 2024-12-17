@@ -9,7 +9,6 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Session } from "next-auth";
-import Link from "next/link";
 
 export default function UserProfileContent({
   session,
@@ -44,7 +43,7 @@ export default function UserProfileContent({
             <ListItem disablePadding key={index}>
               <ListItemButton
                 onClick={() => {
-                  if(props.title === "Sign Out") showSignoutDialoge();
+                  if (props.title === "Sign Out") showSignoutDialoge();
                   closeMenu();
                 }}
                 // LinkComponent={Link}

@@ -16,7 +16,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { Cancel01Icon } from "hugeicons-react";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
