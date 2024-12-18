@@ -1,4 +1,4 @@
-import { Drawer, useMediaQuery, useTheme } from "@mui/material";
+import { Drawer, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import { CSSObject, styled, Theme } from "@mui/material/styles";
 import Navigation from "./navigation";
@@ -74,6 +74,7 @@ export default function Sidebar({
       onClick={() => setOpen(false)}
       onClose={() => setOpen(false)}
     >
+      <Toolbar />
       <Navigation open={open} />
     </Drawer>
   ) : (

@@ -60,7 +60,7 @@ export default function UserProfileSlot() {
           open={isShowMenu}
           onClose={() => setIsShowMenu(false)}
           PaperProps={{
-            sx: { minWidth: "fit-content", width: xs ? "100%" : "50%" },
+            sx: { minWidth: "fit-content", width: xs ? "100%" : "50%", pt: 2 },
           }}
         >
           <Toolbar />
