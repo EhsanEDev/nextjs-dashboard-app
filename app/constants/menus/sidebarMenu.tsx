@@ -56,11 +56,11 @@ export const primarySideBarMenu: Navs = [
     path: "#", // Used # for disabling
     icon: <InformationCircleIcon />,
   },
-  {
-    title: "Help",
-    path: "#", // Used # for disabling
-    icon: <HelpCircleIcon />,
-    elink: "https://www.google.com",
-    eicon: <LinkSquare02Icon size={18} />,
-  },
+  // {
+  //   title: "Help",
+  //   path: "#", // Used # for disabling
+  //   icon: <HelpCircleIcon />,
+  //   elink: "https://www.google.com",
+  //   eicon: <LinkSquare02Icon size={18} />,
+  // },
 ];
