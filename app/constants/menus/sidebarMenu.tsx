@@ -3,9 +3,7 @@ import {
   Analytics01Icon,
   CustomerService01Icon,
   DashboardSquare01Icon,
-  HelpCircleIcon,
   InformationCircleIcon,
-  LinkSquare02Icon,
   Settings01Icon,
   ShoppingBag02Icon,
 } from "hugeicons-react";
