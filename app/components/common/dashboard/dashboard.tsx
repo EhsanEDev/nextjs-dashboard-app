@@ -2,7 +2,7 @@
 
 import Header from "@app/components/common/header/header";
 import Sidebar from "@app/components/common/sidebar/sidebar";
-import { Box, Container } from "@mui/material";
+import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../loadingSpinner";
 import DynamicBreadcrumbs from "./dynamicBreadcrumbs";
@@ -12,12 +12,16 @@ export default function Dashboard({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [open, setOpen] = useState<boolean | null>(null); // Initialize with null to indicate loading
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     // Retrieve the last open state of the menu from localStorage
     const savedState = localStorage.getItem("side-menu");
-    setOpen(savedState === "false" ? false : true);
-  }, []);
+    const initialState = savedState === "false" ? false : true;
+
+    setOpen(sm ? false : initialState);
+  }, [sm]);
 
   useEffect(() => {
     // Store the current open state in localStorage whenever it changes
