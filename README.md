@@ -1,8 +1,4 @@
-Here’s the updated release note using descriptions for the **Features** and **Technologies Used** sections:
-
----
-
-# Next.js Dashboard App  
+# Dashboard App
 A dynamic and feature-rich dashboard application built with Next.js. This app provides secure user authentication, theme customization, and seamless data visualization for enhanced user experience.  
 
 ## Screenshot  
