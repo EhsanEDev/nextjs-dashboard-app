@@ -71,5 +71,3 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Contact  
 If you have any questions, feel free to reach out to me via GitHub issues or at ethan.ekhtiyar@gmail.com.  
-
----
