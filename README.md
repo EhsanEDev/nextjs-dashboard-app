@@ -9,7 +9,7 @@ A dynamic and feature-rich dashboard application built with Next.js. This app pr
 ![Todo List Screenshot](./screenshot.png)  <!-- Replace with the path to your screenshot image -->
 
 ## Live Demo  
-You can try out the live demo of this project [here](https://reactjs-app-todo-list.vercel.app/).
+You can try out the live demo of this project [here](https://nextjs-dashboard-app-mui.vercel.app/).
 
 ## Features  
 - **Authentication and Authorization**: Ensures secure access by using NextAuth.js with support for "Credential" and "GitHub" providers.  
