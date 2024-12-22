@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard App
+A dynamic and feature-rich dashboard application built with Next.js. This app provides secure user authentication, theme customization, and seamless data visualization for enhanced user experience.  
 
-## Getting Started
+## Screenshot  
+![Todo List Screenshot](./screenshot.png)  <!-- Replace with the path to your screenshot image -->
 
-First, run the development server:
+## Live Demo  
+You can try out the live demo of this project [here](https://nextjs-dashboard-app-mui.vercel.app/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features  
+- **Authentication and Authorization**: Ensures secure access by using NextAuth.js with support for "Credential" and "GitHub" providers.  
+- **Skeleton Placeholder**: Enhances user experience by displaying a placeholder while content is loading.  
+- **Color Mode of Theme**: Offers Light, Dark, and System theme modes for personalized appearance preferences.  
+- **Static and Dynamic Routes**: Includes pre-defined static and programmatic dynamic routes for navigation.  
+- **Route Handlers for API**: Provides backend API routes to retrieve and manage data efficiently.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used  
+- **Next.js**: A powerful React framework for building server-rendered and static web applications.  
+- **NextAuth.js**: A robust authentication library for securing user login and authorization.  
+- **Material UI**: A modern and customizable component library for React.  
+- **X Chart and X Data Grid**: Libraries for implementing data visualization and interactive grids.  
+- **Huge Icons (Free Stroke style)**: Icon set providing clear and scalable visuals.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Using Create Next App  
+To get started with the project locally, follow these steps:  
 
-## Learn More
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/EthanEDev/nextjs-dashboard-app.git  
+   ```  
 
-To learn more about Next.js, take a look at the following resources:
+2. Navigate to the project directory:  
+   ```bash  
+   cd nextjs-dashboard-app  
+   ```  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Install dependencies:  
+   ```bash  
+   npm install  
+   ```  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Start the development server:  
+   ```bash  
+   npm run dev  
+   ```  
 
-## Deploy on Vercel
+   Open [http://localhost:3000](http://localhost:3000) in your browser to explore the app.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing  
+Contributions are welcome! If you have suggestions for improvements or find bugs, please open an issue or submit a pull request.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository.  
+2. Create a new branch:  
+   ```bash  
+   git checkout -b feature-branch  
+   ```  
+3. Commit your changes:  
+   ```bash  
+   git commit -am 'Add new feature'  
+   ```  
+4. Push to the branch:  
+   ```bash  
+   git push origin feature-branch  
+   ```  
+5. Open a Pull Request.  
+
+## License  
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.  
+
+## Contact  
+If you have any questions, feel free to reach out to me via GitHub issues or at ethan.ekhtiyar@gmail.com.  
