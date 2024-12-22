@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Grid2 container columns={4} gridColumn={4} spacing={2}>
         {briefInfo.map((card, index) => (
-          <Grid2 key={index} size={{ xs: 4, md: 2, lg: 2, xl: 1 }}>
+          <Grid2 key={index} size={{ xs: 4, sm: 2, lg: 2, xl: 1 }}>
             <CardBrief
               type={card.type as cardType}
               value={card.value}
