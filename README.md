@@ -1,5 +1,5 @@
 # Dashboard App
-A dynamic and feature-rich dashboard application built with Next.js. This app provides secure user authentication, theme customization, and seamless data visualization for enhanced user experience.  
+A dynamic and modern dashboard application built with Next.js. It includes features like authentication, skeleton placeholders, dynamic routing, and API handling to enhance the user experience. This project leverages the power of Material UI, an awesome library for building fast and visually appealing components.
 
 ## Screenshot  
 ![Todo List Screenshot](./screenshot.png)  <!-- Replace with the path to your screenshot image -->
