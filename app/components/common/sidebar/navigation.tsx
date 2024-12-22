@@ -22,7 +22,7 @@ export default function Navigation({
 }: {
   open: boolean;
 }) {
-  const version = "v1.1.0";
+  const version = "v1.0.0";
   const chipInfo = open
     ? `${version} --- Powered by Material UI`
     : `${version}`;
