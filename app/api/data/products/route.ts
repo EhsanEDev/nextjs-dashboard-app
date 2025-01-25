@@ -29,7 +29,7 @@ const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
 export async function GET(request: Request) {
   try {
     // Simulate a delay for testing
-    // await new Promise((resolve) => setTimeout(resolve, 5000));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Extract query parameters
     const { searchParams } = new URL(request.url);

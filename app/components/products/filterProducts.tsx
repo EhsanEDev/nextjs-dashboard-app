@@ -1,6 +1,5 @@
 "use client";
 
-import { Prd } from "@/app/constants/types";
 import {
   Box,
   Card,
@@ -22,11 +21,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function FilterProducts({
-  productsList,
-  setFilteredList,
+  brandsList,
 }: {
-  productsList: Prd[];
-  setFilteredList: (value: Prd[]) => void;
+  brandsList: string[];
 }) {
   const [search, setSearch] = useState("");
   const [show, setShow] = useState("");
@@ -37,9 +34,6 @@ export default function FilterProducts({
 
   const searchParams = useSearchParams();
   const router = useRouter();
-
-  // Extract brand names without duplication
-  const brands = Array.from(new Set(productsList.map((prd: Prd) => prd.brand)));
 
   useEffect(() => {
     const searchQuery = searchParams.get("search") || "";
@@ -67,60 +61,6 @@ export default function FilterProducts({
     );
     router.push(`?${query.toString()}`, undefined);
   }, [search, show, sortby, category, price, brand, router]);
-
-  useEffect(() => {
-    // Apply filters
-    let filtered = productsList;
-
-    const filterFunctions = {
-      search: (prd: Prd) =>
-        prd.title.toLowerCase().includes(search.toLowerCase()),
-      show: (prd: Prd) =>
-        show === "available"
-          ? prd.quantity > 0
-          : show === "notavailable"
-          ? prd.quantity === 0
-          : true,
-      sortby: (a: Prd, b: Prd): number => {
-        switch (sortby) {
-          case "featured":
-            return a.id - b.id; // Ascending order by id
-          case "popular":
-            return b.score - a.score; // Descending order by score
-          case "ascqty":
-            return a.quantity - b.quantity; // Ascending order by quantity
-          case "desqty":
-            return b.quantity - a.quantity; // Descending order by quantity
-          case "ascprice":
-            return a.price - b.price; // Ascending order by price
-          case "desprice":
-            return b.price - a.price; // Descending order by price
-          default:
-            return 0; // No change in order
-        }
-      },
-      category: (prd: Prd) => category === "" || prd.brand === category,
-      price: (prd: Prd) => {
-        if (!price) return true;
-        const decoded = JSON.parse(decodeURIComponent(price));
-        return (
-          (!decoded.min || prd.price > decoded.min) &&
-          (!decoded.max || prd.price < decoded.max)
-        );
-      },
-      brand: (prd: Prd) =>
-        brand === "" || prd.brand.toLowerCase() === brand.toLowerCase(),
-    };
-
-    if (search) filtered = filtered.filter(filterFunctions.search);
-    if (show) filtered = filtered.filter(filterFunctions.show);
-    if (sortby) filtered = filtered.sort(filterFunctions.sortby);
-    if (category) filtered = filtered.filter(filterFunctions.category);
-    if (price) filtered = filtered.filter(filterFunctions.price);
-    if (brand) filtered = filtered.filter(filterFunctions.brand);
-
-    setFilteredList(filtered);
-  }, [search, show, sortby, category, price, brand, productsList, setFilteredList]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -291,7 +231,7 @@ export default function FilterProducts({
         <MenuItem key={0} value={"all"}>
           All
         </MenuItem>
-        {brands.map((brand, index) => (
+        {brandsList.map((brand, index) => (
           <MenuItem key={index + 1} value={brand.toLowerCase()}>
             {brand}
           </MenuItem>
