@@ -4,7 +4,6 @@ import Brand from "./brand/brand";
 import MenuSlot from "./menuSlot";
 import MessageSlot from "./messageSlot";
 import NotificationSlot from "./notificationSlot";
-import SearchBarSlot from "./searchBarSlot";
 import UserProfileSlot from "./userProfileSlot";
 
 export default function Header({
