@@ -5,7 +5,7 @@ import path from "path";
 
 // This caching mechanism helps improve the performance of the API by reducing the need to repeatedly read the same data from file system
 let cachedData: { data: Prd[]; timestamp: number } | null = null;
-const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
+// const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
 
 /******************************************************************************
  * Handles GET requests to fetch and filter product data.
