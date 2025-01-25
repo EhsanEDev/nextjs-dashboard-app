@@ -38,18 +38,14 @@ export default function Header({
         variant="regular"
       >
         <Stack
-          gap={2.4}
+          gap={4.5}
           justifyContent={"center"}
           alignItems={"center"}
           direction={"row"}
         >
-          <Brand />
           <MenuSlot open={open} setOpen={setOpen} />
-          <Divider
-            sx={{ height: 1, display: { xs: "none", md: "block" } }}
-            orientation="vertical"
-          />
-          <SearchBarSlot />
+          <Brand />
+          {/* <SearchBarSlot /> */}
         </Stack>
         <Stack gap={1.5} alignItems={"center"} direction={"row"}>
           <ThemeModeSlot variant="drop" />

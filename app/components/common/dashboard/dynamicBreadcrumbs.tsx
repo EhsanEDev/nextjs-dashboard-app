@@ -3,6 +3,7 @@
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
+import NextLink from "next/link";
 
 export default function DynamicBreadcrumbs() {
   const pathname = usePathname();
@@ -20,7 +21,7 @@ export default function DynamicBreadcrumbs() {
         Dashboard
       </Typography>
     ) : (
-      <Link key="/" href="/" underline="hover" color="textSecondary">
+      <Link key="/" href="/" underline="hover" color="textSecondary" component={NextLink}>
         Dashboard
       </Link>
     );

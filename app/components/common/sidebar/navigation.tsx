@@ -17,12 +17,14 @@ import { Github01Icon, Linkedin01Icon } from "hugeicons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { primarySideBarMenu } from "../../../constants/menus/sidebarMenu";
+import appVersion from "@/package.json"
+
 export default function Navigation({
   open,
 }: {
   open: boolean;
 }) {
-  const version = "v1.0.1";
+  const version = `v${appVersion.version}`;
   const chipInfo = open
     ? `${version} --- Powered by Material UI`
     : `${version}`;
