@@ -1,8 +1,19 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
+import { cookies } from "next/headers";
 
 export const options = {
   secret: process.env.NEXTAUTH_SECRET as string,
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "none",  // Allow cross-site access (required for iframe)
+        secure: true,       // Must be true for SameSite=None
+      },
+    },
+  },
   providers: [
     CredentialsProvider({
       name: "Account",
