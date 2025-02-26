@@ -1,4 +1,5 @@
 import { Session } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
@@ -15,9 +16,10 @@ export const options = {
     },
   },
   callbacks: {
-    async session({ session }: { session: Session;}) {
-      console.log("Session Config Applied:", session);
-      return session
+    async session({ session, token }: { session: Session; token: JWT }) {
+      console.log("Session Callback Triggered:", session);
+      console.log("Token Data:", token);
+      return session;
     },
   },
   providers: [
