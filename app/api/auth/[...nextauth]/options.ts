@@ -1,3 +1,4 @@
+import { Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
@@ -11,6 +12,12 @@ export const options = {
         secure: true,
         sameSite: "none",
       },
+    },
+  },
+  callbacks: {
+    async session({ session }: { session: Session;}) {
+      console.log("Session Config Applied:", session);
+      return session
     },
   },
   providers: [
