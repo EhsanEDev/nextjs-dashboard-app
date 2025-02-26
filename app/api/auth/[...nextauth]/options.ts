@@ -1,27 +1,8 @@
-import { Session } from "next-auth";
-import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
 export const options = {
   secret: process.env.NEXTAUTH_SECRET as string,
-  cookies: {
-    sessionToken: {
-      name: "next-auth.session-token",
-      options: {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-      },
-    },
-  },
-  callbacks: {
-    async session({ session, token }: { session: Session; token: JWT }) {
-      console.log("Session Callback Triggered:", session);
-      console.log("Token Data:", token);
-      return session;
-    },
-  },
   providers: [
     CredentialsProvider({
       name: "Account",
