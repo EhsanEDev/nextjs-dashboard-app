@@ -3,6 +3,16 @@ import GithubProvider from "next-auth/providers/github";
 
 export const options = {
   secret: process.env.NEXTAUTH_SECRET as string,
+  cookies: {
+    sessionToken: {
+      name: "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      },
+    },
+  },
   providers: [
     CredentialsProvider({
       name: "Account",
