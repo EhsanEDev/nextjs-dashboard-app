@@ -92,7 +92,7 @@ export default function Navigation({
             </LinkMUI>
             <LinkMUI
               align="center"
-              href="https://www.linkedin.com/in/ethan-ekhtiyar/"
+              href="https://www.linkedin.com/in/ehsan-ekhtiyar/"
               target="_blank"
               variant="caption"
               color="primary"
