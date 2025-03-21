@@ -79,7 +79,7 @@ export default function Navigation({
           >
             <LinkMUI
               align="center"
-              href="https://github.com/EthanEDev/nextjs-dashboard-app"
+              href="https://github.com/EhsanEDev/nextjs-dashboard-app"
               target="_blank"
               color="primary"
               sx={{
@@ -92,7 +92,7 @@ export default function Navigation({
             </LinkMUI>
             <LinkMUI
               align="center"
-              href="https://www.linkedin.com/in/ethan-ekhtiyar/"
+              href="https://www.linkedin.com/in/ehsan-ekhtiyar/"
               target="_blank"
               variant="caption"
               color="primary"
